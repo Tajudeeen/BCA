@@ -21,3 +21,10 @@ TypeScript, production compilation, SQL migration application in SQLite and expl
 ## Further work before public launch
 
 Approved identity/contact/legal content, real notification delivery, ability to add projects/upload curated public assets from the CMS, scheduled object/database backups with tested restore, configurable retention and deletion controls, and full authenticated role-based browser QA.
+
+
+## Concept film integration
+
+Three original animations were recovered from the repository's pre-LFS commit and verified against the current LFS SHA-256 pointers. Optimized derivatives preserve duration and audio, use browser-compatible H.264/AAC with fast-start metadata, and are served from R2 rather than embedded in the Git repository. Seek requests use HTTP byte ranges. Source MP4s total approximately 133 MB; the web derivatives total approximately 32 MB.
+
+The IRIN video exists as an LFS pointer but the media retrieval returned 404. Its original bytes were not recovered, so no IRIN video is represented as working. The gallery remains available.

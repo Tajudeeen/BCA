@@ -1,0 +1,25 @@
+export const films = {
+  "ami": {
+    "key": "public-films/ami-c7795a7ee04c04fe.mp4",
+    "bytes": 4510717,
+    "sha256": "c7795a7ee04c04fe0aa8f3018806722796945007cdba6af4f7822e6dd565bde6",
+    "source": "AMI/ANIMATION.mp4",
+    "sourceSha256": "5948be7f86daac1c8eaabbfe687114db82b50c1050937e4fc95406297928adf0"
+  },
+  "orange": {
+    "key": "public-films/orange-c3f434ec4a96cfe5.mp4",
+    "bytes": 21302186,
+    "sha256": "c3f434ec4a96cfe5bc318fe4c0a8fcecdb4592f2bae5e38de93e4a6b68c4b4c7",
+    "source": "ORANGE CRUISE/lv_0_20261015215647.mp4",
+    "sourceSha256": "fca35358ee430ea28da05d9e8663822cdcc87e70e98be75e652a880f41c13ec7"
+  },
+  "ara": {
+    "key": "public-films/ara-c0ed941c12e6fb8c.mp4",
+    "bytes": 6533791,
+    "sha256": "c0ed941c12e6fb8cdfbf98b3e502320e68209ffdb7322aa15b7fbd57a00ef927",
+    "source": "ara 1/cng/lv_0_20261014071142.mp4",
+    "sourceSha256": "d27852b27d13c510357f3e77bc7abe0f0bd3e84e39495b41a591ace7db39d4df"
+  }
+} as const;
+export type FilmSlug = keyof typeof films;
+export function getFilm(slug:string){return Object.hasOwn(films,slug)?films[slug as FilmSlug]:null;}

@@ -47,7 +47,7 @@ Content edits and enquiries persist without rebuilding. Current content manageme
 
 ## Assets and confidentiality
 
-Only 20 selected public concept renders were optimized to WebP. The original repository's source renders and videos are retained. Full CAD, research, engineering files and source videos are not bundled into the website. `docs/asset-manifest.json` maps each curated asset to its original repository path.
+Only 20 selected public concept renders were optimized to WebP. The original repository's source renders and videos are retained. Full CAD, research, engineering files and original source videos are not bundled into the website. Selected optimized concept films are stored separately in R2 and streamed through the website. `docs/asset-manifest.json` maps each curated asset to its original repository path.
 
 ## Backups
 
@@ -56,3 +56,13 @@ The authenticated studio desk exports structured enquiry, grant, material metada
 ## IRIN integration
 
 IRIN is featured on the homepage and has its own `/projects/irin` gallery with four selected exterior/interior concept renders. It is available in enquiry forms, administration, grant creation and its authenticated `/private/irin` room. The restored research PDF, drawings and LFS videos remain repository assets and are not published in public galleries.
+
+## Concept animations
+
+AMI, Orange Cruise and Ara 1 have click-to-play concept films on their project pages. Posters and film labels identify playable projects on the homepage and collection. Playback is inline on mobile, uses native controls, retains the original audio, and does not preload video bytes or autoplay. Ara 1 is explicitly labelled as the CNG study.
+
+Optimized H.264/AAC MP4s are stored under fixed, checksum-bound `public-films/` R2 keys declared in `lib/films.ts`. `/api/films/[slug]` implements streaming, HEAD, single byte ranges, seek support, ETags, and bounded caching. Source provenance and checksums are in `docs/video-sources.json`; encoding metadata is in `docs/video-encoding.json`.
+
+Media import uses `/api/studio/film-import?slug=<approved-film>` and a temporary `STUDIO_FILM_IMPORT_TOKEN` runtime secret. Only the predefined film keys, exact lengths and SHA-256 hashes are accepted. The import secret is removed and redeployed after ingestion. It must remain absent during normal operation. This endpoint never accepts confidential project materials.
+
+IRIN's video remains unavailable through the connected GitHub/LFS download route, which returned HTTP 404. Its video player will be enabled after the actual MP4 can be retrieved and verified. No placeholder film or broken player is displayed for it.
