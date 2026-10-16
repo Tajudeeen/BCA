@@ -62,5 +62,21 @@
   {
     "asset": "/vehicles/ara-3.webp",
     "source": "ara 1/EV/single out the rear 3_4 view.png"
+  },
+  {
+    "asset": "/vehicles/irin-0.webp",
+    "source": "irin website/renders/imagine the front 3_4 view of the bus in a dark blue background (1).png"
+  },
+  {
+    "asset": "/vehicles/irin-1.webp",
+    "source": "irin website/renders/change the write up in the side view from BAC to IRIN.png"
+  },
+  {
+    "asset": "/vehicles/irin-2.webp",
+    "source": "irin website/renders/change the write up in the back view from BAC to IRIN.png"
+  },
+  {
+    "asset": "/vehicles/irin-3.webp",
+    "source": "irin website/renders/hive the interior a blue color finishing.png"
   }
 ]

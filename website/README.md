@@ -4,7 +4,7 @@ Automotive design studio website implemented from `Bonire_Concepts_Art_Website_D
 
 ## Included
 
-- Responsive homepage, project collection, four individual vehicle pages and keyboard-accessible image lightboxes.
+- Responsive homepage, project collection, five individual vehicle pages and keyboard-accessible image lightboxes.
 - Studio, partnerships, early supporters, contact, draft privacy and terms pages.
 - Five enquiry types with project context, server validation, consent, spam honeypot, hourly rate limits and persistent D1 records.
 - Restricted studio desk: enquiry inbox, review statuses, project content editing, grant/revoke access and JSON backup export.
@@ -40,7 +40,6 @@ Content edits and enquiries persist without rebuilding. Current content manageme
 ## Launch inputs still required
 
 - Confirm final vehicle names, categories, summaries and evidence-based development stages. All projects start as Concept Design.
-- Restore selected IRIN public imagery. The deleted private research PDF is not needed and should not be added as a public asset.
 - Confirm studio administrator email, founder biography, studio contact and final legal/data retention details.
 - Configure an email delivery provider if email notifications are required. The persistent studio inbox works independently; this version does not send notification email.
 - Approve final supporter programme terms. No payments, automatic investments or public supporter listings are implemented.
@@ -48,8 +47,12 @@ Content edits and enquiries persist without rebuilding. Current content manageme
 
 ## Assets and confidentiality
 
-Only 16 selected public concept renders were optimized to WebP. The original repository's source renders and videos are retained. Full CAD, research, engineering files and source videos are not bundled into the website. `docs/asset-manifest.json` maps each curated asset to its original repository path.
+Only 20 selected public concept renders were optimized to WebP. The original repository's source renders and videos are retained. Full CAD, research, engineering files and source videos are not bundled into the website. `docs/asset-manifest.json` maps each curated asset to its original repository path.
 
 ## Backups
 
 The authenticated studio desk exports structured enquiry, grant, material metadata, content and audit data. File bytes remain in R2 and need a separate object backup. There is no scheduled backup or restore interface in this version.
+
+## IRIN integration
+
+IRIN is featured on the homepage and has its own `/projects/irin` gallery with four selected exterior/interior concept renders. It is available in enquiry forms, administration, grant creation and its authenticated `/private/irin` room. The restored research PDF, drawings and LFS videos remain repository assets and are not published in public galleries.

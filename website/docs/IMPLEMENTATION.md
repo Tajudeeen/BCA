@@ -4,9 +4,9 @@ The six-page planning PDF calls for a studio presentation site, selective public
 
 ## Public portfolio decisions
 
-Orange Cruise is the initial hero, followed by AMI, Mace Freedomm and Ara 1. Repository folder names determine provisional naming. The PDF uses Orange Cruiser while the repository uses ORANGE CRUISE; the website currently follows the repository. AMI's category remains provisional. Ara 1's EV/CNG-labelled studies do not establish a validated powertrain.
+Orange Cruise is the initial hero, followed by IRIN, AMI, Mace Freedomm and Ara 1. Repository folder names determine provisional naming. The PDF uses Orange Cruiser while the repository uses ORANGE CRUISE; the website currently follows the repository. AMI's category remains provisional. Ara 1's EV/CNG-labelled studies do not establish a validated powertrain.
 
-IRIN is acknowledged as a planned portfolio item without a fabricated render. A founder profile will be added after approved biography text is supplied.
+IRIN is integrated as a minibus / shared mobility concept, using four restored repository renders. Its detailed research PDF and drawings remain outside the public website bundle. A founder profile will be added after approved biography text is supplied.
 
 ## Access boundary
 
@@ -16,7 +16,7 @@ No access is automatically granted on form submission or review-status change. R
 
 ## Validation performed
 
-TypeScript, production compilation, SQL migration application in SQLite and explicit grant-isolation/expiry/revocation checks. Asset integrity confirms all 16 selected renders exist. Browser QA and end-to-end hosted notification delivery have not been claimed.
+TypeScript, production compilation, SQL migration application in SQLite and explicit grant-isolation/expiry/revocation checks. Asset integrity confirms all 20 selected renders exist. Browser QA and end-to-end hosted notification delivery have not been claimed.
 
 ## Further work before public launch
 
