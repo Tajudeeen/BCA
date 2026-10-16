@@ -63,6 +63,6 @@ AMI, Orange Cruise and Ara 1 have click-to-play concept films on their project p
 
 Optimized H.264/AAC MP4s are stored under fixed, checksum-bound `public-films/` R2 keys declared in `lib/films.ts`. `/api/films/[slug]` implements streaming, HEAD, single byte ranges, seek support, ETags, and bounded caching. Source provenance and checksums are in `docs/video-sources.json`; encoding metadata is in `docs/video-encoding.json`.
 
-Media import uses `/api/studio/film-import?slug=<approved-film>` and a temporary `STUDIO_FILM_IMPORT_TOKEN` runtime secret. Only the predefined film keys, exact lengths and SHA-256 hashes are accepted. The import secret is removed and redeployed after ingestion. It must remain absent during normal operation. This endpoint never accepts confidential project materials.
+One-time media ingestion used a temporary runtime secret and accepted only the predefined film keys, exact lengths and SHA-256 hashes. Ingestion is now complete: `/api/studio/film-import` is closed in source and always returns 403, regardless of runtime bindings. The temporary secret was also removed from the environment configuration. Future imports require an explicit source change and a fresh credential; this route cannot be reopened by an environment change alone.
 
 IRIN's video remains unavailable through the connected GitHub/LFS download route, which returned HTTP 404. Its video player will be enabled after the actual MP4 can be retrieved and verified. No placeholder film or broken player is displayed for it.

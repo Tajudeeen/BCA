@@ -28,3 +28,5 @@ Approved identity/contact/legal content, real notification delivery, ability to 
 Three original animations were recovered from the repository's pre-LFS commit and verified against the current LFS SHA-256 pointers. Optimized derivatives preserve duration and audio, use browser-compatible H.264/AAC with fast-start metadata, and are served from R2 rather than embedded in the Git repository. Seek requests use HTTP byte ranges. Source MP4s total approximately 133 MB; the web derivatives total approximately 32 MB.
 
 The IRIN video exists as an LFS pointer but the media retrieval returned 404. Its original bytes were not recovered, so no IRIN video is represented as working. The gallery remains available.
+
+The one-time film import route is permanently closed in the deployed source after successful checksum-verified ingestion. This avoids relying on runtime-secret removal alone to close access.
