@@ -53,3 +53,6 @@ body{font-family:Arial,Helvetica,sans-serif}h1,h2,h3{letter-spacing:-.045em}.eye
 
 /* Mace Freedomm truck gallery sits alongside the existing SUV study. */
 .truck-variant{margin-top:75px;padding-top:40px;border-top:1px solid var(--line)}.truck-variant .gallery-thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:760px){.truck-variant{margin-top:45px;padding-top:30px}}
+
+/* Main page titles use the blue sampled from the official BCA symbol. */
+.page-surface h1,.page-surface h1 span{color:var(--brand-blue)}
