@@ -1,4 +1,15 @@
-import { getProjects } from '@/lib/content';
+import {getProjects} from '@/lib/content';
+import {ConceptPreview} from '@/components/concept-preview';
 export const dynamic='force-dynamic';
 export const metadata={title:'Vehicle Concepts'};
-export default async function Projects(){const p=await getProjects();return <section className="section page-intro"><p className="eyebrow">The concept collection</p><h1>The concept<br/><span>collection.</span></h1><div className="intro-row"><p>Explore selected automotive studies from Bonire Concepts Art. Each project is a design concept, with further development open to the right collaboration.</p><span className="label">{String(p.length).padStart(2,'0')} SELECTED PROJECTS</span></div><div className="project-grid collection">{p.map((x,i)=><a className="project-card" href={'/projects/'+x.slug} key={x.slug}><div className="card-image"><img src={x.images[0]} alt={`${x.name} concept render`} loading={i===0?'eager':'lazy'}/><span className="image-counter">0{i+1}</span>{x.film&&<span className="film-badge">Concept film ↗</span>}<span className="card-arrow">↗</span></div><div className="card-heading"><h2>{x.name}</h2><span className="status">{x.status}</span></div><p>{x.category}</p></a>)}</div><div className="editorial-note"><span>Portfolio note</span><p>Each gallery shares four curated concept visualizations. Detailed research, drawings and development documents are reserved for individually approved project rooms.</p></div></section>;}
+export default async function Projects(){
+ const projects=await getProjects();
+ return <div className="concept-collection">
+  <section className="collection-intro"><div><p className="eyebrow">Bonire Concepts Art / Portfolio</p><h1>Designs for<br/>a world in motion<span>.</span></h1></div><div className="collection-intro-copy"><p>Original automotive studies, from shared mobility to expressive everyday vehicles.</p><a href="#concepts">Explore {String(projects.length).padStart(2,'0')} concepts ↓</a></div></section>
+  <section id="concepts" className="concept-list" aria-label="Automotive concepts">{projects.map((project,index)=><article className="concept-panel" key={project.slug} aria-labelledby={'concept-'+project.slug}>
+   <ConceptPreview film={project.film} name={project.name} image={project.images[0]}/>
+   <div className="concept-panel-copy"><div className="concept-meta"><span>{String(index+1).padStart(2,'0')} / BCA</span><span>{project.status}</span></div><div><p className="concept-category">{project.category}</p><h2 id={'concept-'+project.slug}>{project.name}</h2><p className="concept-summary">{project.summary}</p></div><div className="concept-links"><a className="concept-open" href={'/projects/'+project.slug}>Explore design <span>↗</span></a>{project.film?<a className="concept-full-film" href={'/projects/'+project.slug+'#film'}>Watch full film with sound ↗</a>:<span className="concept-stills">Exterior & interior gallery</span>}</div></div>
+  </article>)}</section>
+  <div className="collection-note"><span>Design archive</span><p>These are concept visualizations. Detailed research, drawings and development documents are reserved for individually approved project rooms.</p></div>
+ </div>;
+}
