@@ -1,0 +1,59 @@
+[
+  {
+    "name": "ami",
+    "bytes": 4510717,
+    "duration": 37.0,
+    "streams": [
+      [
+        "video",
+        "h264",
+        1280,
+        714
+      ],
+      [
+        "audio",
+        "aac",
+        null,
+        null
+      ]
+    ]
+  },
+  {
+    "name": "orange",
+    "bytes": 21302186,
+    "duration": 82.56,
+    "streams": [
+      [
+        "video",
+        "h264",
+        1280,
+        714
+      ],
+      [
+        "audio",
+        "aac",
+        null,
+        null
+      ]
+    ]
+  },
+  {
+    "name": "ara",
+    "bytes": 6533791,
+    "duration": 35.68,
+    "streams": [
+      [
+        "video",
+        "h264",
+        1240,
+        720
+      ],
+      [
+        "audio",
+        "aac",
+        null,
+        null
+      ]
+    ]
+  }
+]

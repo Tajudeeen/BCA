@@ -1,0 +1,7 @@
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+export const enquiries = sqliteTable('enquiries', { id:text('id').primaryKey(), kind:text('kind').notNull(), project:text('project').notNull(), name:text('name').notNull(), email:text('email').notNull(), details:text('details').notNull(), status:text('status').notNull().default('new'), createdAt:integer('created_at').notNull() });
+export const projectContent = sqliteTable('project_content', { slug:text('slug').primaryKey(), content:text('content').notNull(), updatedAt:integer('updated_at').notNull() });
+export const grants = sqliteTable('grants', { id:text('id').primaryKey(), email:text('email').notNull(), project:text('project').notNull(), expiresAt:integer('expires_at').notNull(), revoked:integer('revoked').notNull().default(0), createdAt:integer('created_at').notNull() });
+export const materials = sqliteTable('materials', { id:text('id').primaryKey(), project:text('project').notNull(), title:text('title').notNull(), objectKey:text('object_key').notNull(), mime:text('mime').notNull(), createdAt:integer('created_at').notNull() });
+export const audit = sqliteTable('audit', { id:text('id').primaryKey(), actor:text('actor').notNull(), action:text('action').notNull(), subject:text('subject').notNull(), createdAt:integer('created_at').notNull() });
+export const rateLimits = sqliteTable('rate_limits', { key:text('key').primaryKey(), count:integer('count').notNull() });

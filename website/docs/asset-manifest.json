@@ -1,0 +1,82 @@
+[
+  {
+    "asset": "/vehicles/orange-0.webp",
+    "source": "ORANGE CRUISE/imagine the front 3_4view of the car.png"
+  },
+  {
+    "asset": "/vehicles/orange-1.webp",
+    "source": "ORANGE CRUISE/imagine the side view of the car (3).png"
+  },
+  {
+    "asset": "/vehicles/orange-2.webp",
+    "source": "ORANGE CRUISE/make a render of the direct front view of the car.png"
+  },
+  {
+    "asset": "/vehicles/orange-3.webp",
+    "source": "ORANGE CRUISE/make a render of the direct rear view of the car (1).png"
+  },
+  {
+    "asset": "/vehicles/ami-0.webp",
+    "source": "AMI/make a photo realistic environmental render of truck in a city environment.png"
+  },
+  {
+    "asset": "/vehicles/ami-1.webp",
+    "source": "AMI/make a photo realistic environmental render of the direct front view of the truck in a city environm.png"
+  },
+  {
+    "asset": "/vehicles/ami-2.webp",
+    "source": "AMI/make a photo realistic environmental render of the direct rear view of the truck in a city environme.png"
+  },
+  {
+    "asset": "/vehicles/ami-3.webp",
+    "source": "AMI/make a photo realistic environmental render of the direct side view of the truck in a city environme.png"
+  },
+  {
+    "asset": "/vehicles/mace-0.webp",
+    "source": "MACE FREEDOMM/SUV/make a photorealistic 3d render of the car a realistic white studio render, display front 3_4 view w.png"
+  },
+  {
+    "asset": "/vehicles/mace-1.webp",
+    "source": "MACE FREEDOMM/SUV/make a photorealistic 3d render of the car a realistic white studio render, display back 3_4 view wi.png"
+  },
+  {
+    "asset": "/vehicles/mace-2.webp",
+    "source": "MACE FREEDOMM/SUV/make a photorealistic 3d render of the car a realistic white studio render, display direct front vie.png"
+  },
+  {
+    "asset": "/vehicles/mace-3.webp",
+    "source": "MACE FREEDOMM/SUV/make a photorealistic 3d render of the car a realistic white studio render, display direct side view.png"
+  },
+  {
+    "asset": "/vehicles/ara-0.webp",
+    "source": "ara 1/EV/single out the front 3_4 view (1).png"
+  },
+  {
+    "asset": "/vehicles/ara-1.webp",
+    "source": "ara 1/EV/imagine the direct front view (2).png"
+  },
+  {
+    "asset": "/vehicles/ara-2.webp",
+    "source": "ara 1/EV/imagine the side view of the car (5).png"
+  },
+  {
+    "asset": "/vehicles/ara-3.webp",
+    "source": "ara 1/EV/single out the rear 3_4 view.png"
+  },
+  {
+    "asset": "/vehicles/irin-0.webp",
+    "source": "irin website/renders/imagine the front 3_4 view of the bus in a dark blue background (1).png"
+  },
+  {
+    "asset": "/vehicles/irin-1.webp",
+    "source": "irin website/renders/change the write up in the side view from BAC to IRIN.png"
+  },
+  {
+    "asset": "/vehicles/irin-2.webp",
+    "source": "irin website/renders/change the write up in the back view from BAC to IRIN.png"
+  },
+  {
+    "asset": "/vehicles/irin-3.webp",
+    "source": "irin website/renders/hive the interior a blue color finishing.png"
+  }
+]
