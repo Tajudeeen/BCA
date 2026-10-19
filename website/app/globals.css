@@ -68,3 +68,6 @@ body{display:flex;flex-direction:column;min-height:100vh;min-height:100svh}.head
 
 /* Approved company tagline and a direct studio enquiry action. */
 .studio-explore-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 30px}.studio-contact-link{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;min-height:44px;padding:11px 18px;border:1px solid var(--brand-blue);background:var(--brand-blue);color:#092634;font-size:12px}.studio-contact-link:hover{background:#62b5df;border-color:#62b5df}@media(max-width:760px){.studio-explore-actions{gap:20px}.studio-contact-link{font-size:11px;padding:10px 15px;gap:25px}}
+
+/* Make the approved purpose statements easier to read over the underlay. */
+.page-surface .notes-purpose p,.page-surface .purpose-statements article>p:last-child{color:#172b36;font-size:16px;font-weight:500;line-height:1.85}.page-surface .notes-purpose h3{color:#172b36;font-size:15px;font-weight:700}.page-surface .purpose-statements h3{color:#172b36;font-weight:600}@media(max-width:760px){.page-surface .notes-purpose p,.page-surface .purpose-statements article>p:last-child{font-size:15px;line-height:1.8}}

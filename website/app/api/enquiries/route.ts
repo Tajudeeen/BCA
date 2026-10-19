@@ -9,7 +9,7 @@ export async function POST(req:Request){
  try{
  const raw=await req.text();if(raw.length>16000)return Response.json({error:'Request too large.'},{status:413});
  const d=JSON.parse(raw);if(d.website)return Response.json({error:'Unable to accept this request.'},{status:400});
- const kinds=['access','ip','partnership','support','contact'];
+ const kinds=['access','ip','partnership','support','contact','commission'];
  const str=(v:unknown,max=200)=>typeof v==='string'&&v.trim().length>0&&v.length<=max;
  if(!kinds.includes(d.kind)||!validProject(d.project)||!str(d.name)||!str(d.email,254)||!/^\S+@\S+\.\S+$/.test(d.email)||!str(d.message,4000)||d.consent!==true)return Response.json({error:'Please complete all required fields and accept the privacy notice.'},{status:400});
  if(['access','ip','partnership'].includes(d.kind)&&(!str(d.organization)||!str(d.country)||!str(d.intent,1000)))return Response.json({error:'Organization, country and intended use or contribution are required.'},{status:400});
