@@ -1,10 +1,12 @@
+import {pageMetadata,breadcrumbs,absoluteUrl} from '@/lib/seo';
+import {StructuredData} from '@/components/structured-data';
 import {getProjects} from '@/lib/content';
 import {ConceptPreview} from '@/components/concept-preview';
 export const dynamic='force-dynamic';
-export const metadata={title:'Vehicle Concepts'};
+export const metadata=pageMetadata('Vehicle Design Portfolio | EV, CNG, SUV & Pickup Concepts','Explore BCA vehicle concepts: IRIN passenger and cargo transport, Orange Cruiser EV SUV, ARA CNG and electric sedan, AMI pickup and MACE FREEDOM SUV and truck.','/projects','/vehicles/orange-0.webp');
 export default async function Projects(){
  const projects=await getProjects();
- return <div className="concept-collection">
+ return <div className="concept-collection"><StructuredData data={{'@context':'https://schema.org','@graph':[breadcrumbs([{name:'Home',path:'/'},{name:'Projects',path:'/projects'}]),{'@type':'ItemList',name:'BCA vehicle design concepts',itemListElement:projects.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name,url:absoluteUrl('/projects/'+p.slug)}))}]}}/>
   <section className="collection-intro"><div><p className="eyebrow">Bonire Concepts Art / Portfolio</p><h1>Designs for<br/>a world in motion<span>.</span></h1></div><div className="collection-intro-copy"><p>Original automotive studies, from shared mobility to expressive everyday vehicles.</p><a href="#concepts">Explore {String(projects.length).padStart(2,'0')} concepts ↓</a></div></section>
   <section id="concepts" className="concept-list" aria-label="Automotive concepts">{projects.map((project,index)=><article className="concept-panel" key={project.slug} aria-labelledby={'concept-'+project.slug}>
    <ConceptPreview film={project.film} name={project.name} image={project.images[0]}/>

@@ -1,7 +1,9 @@
+import {siteOrigin,organization} from '@/lib/seo';
+import {StructuredData} from '@/components/structured-data';
 import type { Metadata, Viewport } from 'next';
 export const viewport:Viewport={width:'device-width',initialScale:1};
 import {Header,Footer} from '@/components/shell';
 import {PageSurface} from '@/components/page-surface';
 import './globals.css';
-export const metadata:Metadata={title:{default:'Bonire Concepts Art | Automotive Design & IP Development',template:'%s | Bonire Concepts Art'},description:'Independent automotive design and intellectual property development studio with African roots and global ambition. Original concepts, research and strategic collaboration.',applicationName:'Bonire Concepts Art',manifest:'/manifest.webmanifest',appleWebApp:{capable:true,title:'BCA',statusBarStyle:'default'},icons:{icon:[{url:'/favicon-32.png',sizes:'32x32',type:'image/png'},{url:'/favicon.ico',type:'image/x-icon'}],shortcut:'/favicon.ico',apple:[{url:'/apple-touch-icon.png',sizes:'180x180',type:'image/png'}]}};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><Header/><PageSurface>{children}</PageSurface><Footer/></body></html>;}
+export const metadata:Metadata={metadataBase:new URL(siteOrigin),robots:{index:true,follow:true},title:{default:'Bonire Concepts Art | Automotive Design & IP Development',template:'%s | Bonire Concepts Art'},description:'Independent automotive design and intellectual property development studio with African roots and global ambition. Original concepts, research and strategic collaboration.',applicationName:'Bonire Concepts Art',manifest:'/manifest.webmanifest',appleWebApp:{capable:true,title:'BCA',statusBarStyle:'default'},icons:{icon:[{url:'/favicon-32.png',sizes:'32x32',type:'image/png'},{url:'/favicon.ico',type:'image/x-icon'}],shortcut:'/favicon.ico',apple:[{url:'/apple-touch-icon.png',sizes:'180x180',type:'image/png'}]}};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><StructuredData data={{'@context':'https://schema.org','@graph':[organization,{'@type':'WebSite','@id':siteOrigin+'/#website',url:siteOrigin,name:'Bonire Concepts Art',publisher:{'@id':organization['@id']},inLanguage:'en'}]}}/><Header/><PageSurface>{children}</PageSurface><Footer/></body></html>;}

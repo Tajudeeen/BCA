@@ -1,3 +1,5 @@
+import {pageMetadata} from '@/lib/seo';
+export const metadata=pageMetadata('Automotive Design & Vehicle Concept Studio','Bonire Concepts Art is an independent automotive design and IP development studio in Nigeria. Explore original vehicle concepts and commission design work.','/','/backgrounds/home.webp');
 import {studio} from '@/lib/studio';
 export default function Home(){
  return <div className="studio-home">
