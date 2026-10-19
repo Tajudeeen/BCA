@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const here=path.dirname(fileURLToPath(import.meta.url)),source=path.dirname(here);
+for(const directory of ['app','components','lib','public']){fs.rmSync(path.join(here,directory),{recursive:true,force:true});fs.mkdirSync(path.join(here,directory),{recursive:true});}
+const copy=(file)=>fs.cpSync(path.join(source,file),path.join(here,file),{recursive:true});
+for(const file of ['app/page.tsx','app/layout.tsx','app/globals.css','app/not-found.tsx','app/[section]','app/projects','app/blog','app/sitemap.xml','app/robots.txt'])copy(file);
+for(const name of ['shell','page-surface','social-icon','enquiry-form','gallery','concept-preview','project-film','article-body','structured-data'])copy('components/'+name+'.tsx');
+for(const name of ['studio','contact','projects','ara-variants','mace-variants','seo','blog-model'])copy('lib/'+name+'.ts');
+copy('public');
+const write=(file,text)=>{const target=path.join(here,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,text);};
+write('lib/backend.ts',fs.readFileSync(path.join(here,'backend.template.ts'),'utf8'));
+write('lib/content.ts',"import {publicContent} from './backend';\nexport async function getProjects(){return (await publicContent()).projects;}\n");
+write('lib/blog.ts',"import {publicContent} from './backend';\nexport async function getPublishedPosts(){return (await publicContent()).posts;}\nexport async function getPublishedPost(slug:string){return (await getPublishedPosts()).find(post=>post.slug===slug);}\n");
+write('app/api/enquiries/route.ts',fs.readFileSync(path.join(here,'enquiries.template.ts'),'utf8'));
+write('app/api/films/[slug]/route.ts',fs.readFileSync(path.join(here,'films.template.ts'),'utf8'));
+write('app/api/admin/[[...path]]/route.ts',"export function GET(){return new Response('Use the protected Studio Desk.',{status:403});}\nexport const POST=GET;\n");
+let seo=fs.readFileSync(path.join(here,'lib/seo.ts'),'utf8').replace("export const siteOrigin='https://bonire-concepts-art.deeen-code.chatgpt.site';","export const siteOrigin=process.env.BCA_PUBLIC_ORIGIN||'https://bca-chi-three.vercel.app';");write('lib/seo.ts',seo);
+write('app/error.tsx',"'use client';\nexport default function ErrorPage({reset}:{reset:()=>void}){return <section className=\"section page-intro\"><p className=\"eyebrow\">Studio website</p><h1>Please try again.</h1><p>We couldn’t load this page. Try again in a moment.</p><button className=\"button\" onClick={reset}>Try again</button></section>;}\n");
+console.log('Prepared native Next.js public website and protected backend links.');
