@@ -65,3 +65,6 @@ footer{background:var(--brand-blue);color:#092634}.footer-top,.footer-bottom{bor
 
 /* The page fills short viewports and the footer follows the document content. */
 body{display:flex;flex-direction:column;min-height:100vh;min-height:100svh}.header,footer{flex-shrink:0}.page-surface{flex:1 0 auto;min-height:0}footer{margin-top:auto}
+
+/* Approved company tagline and a direct studio enquiry action. */
+.studio-explore-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px 30px}.studio-contact-link{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;min-height:44px;padding:11px 18px;border:1px solid var(--brand-blue);background:var(--brand-blue);color:#092634;font-size:12px}.studio-contact-link:hover{background:#62b5df;border-color:#62b5df}@media(max-width:760px){.studio-explore-actions{gap:20px}.studio-contact-link{font-size:11px;padding:10px 15px;gap:25px}}

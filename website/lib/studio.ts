@@ -1,5 +1,6 @@
 // Approved company positioning supplied by Bonire Concepts Art.
 export const studio = {
+  tagline: "Shaping Africa's Automotive Identity.",
   positioning: 'Bonire Concepts Art (BCA) is an independent automotive design and intellectual property development studio with African roots and global ambition.',
   shortVision: 'To shape the future of automotive design and mobility through original innovation from Africa.',
   shortMission: 'To create and advance original automotive designs and mobility solutions from concept to commercialization through research, design, and strategic collaboration.',
