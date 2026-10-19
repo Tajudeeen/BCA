@@ -1,0 +1,2 @@
+import {articleBlocks} from '@/lib/blog-model';
+export function ArticleBody({body}:{body:string}){return <div className="article-prose">{articleBlocks(body).map((block,index)=>block.type==='heading'?<h2 key={index}>{block.text}</h2>:block.type==='list'?<ul key={index}>{block.items?.map((item,i)=><li key={i}>{item}</li>)}</ul>:block.type==='quote'?<blockquote key={index}>{block.text}</blockquote>:<p key={index}>{block.text}</p>)}</div>;}

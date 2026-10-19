@@ -1,7 +1,7 @@
 'use client';
 import {usePathname} from 'next/navigation';
 import type {ReactNode} from 'react';
-const backgrounds:Record<string,string>={about:'overhead',projects:'profile',partnerships:'rear',support:'overhead',contact:'rear'};
+const backgrounds:Record<string,string>={blog:'overhead',about:'overhead',projects:'profile',partnerships:'rear',support:'overhead',contact:'rear'};
 export function PageSurface({children}:{children:ReactNode}){
  const pathname=usePathname();
  const section=pathname.split('/')[1]||'home';

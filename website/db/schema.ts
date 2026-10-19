@@ -5,3 +5,5 @@ export const grants = sqliteTable('grants', { id:text('id').primaryKey(), email:
 export const materials = sqliteTable('materials', { id:text('id').primaryKey(), project:text('project').notNull(), title:text('title').notNull(), objectKey:text('object_key').notNull(), mime:text('mime').notNull(), createdAt:integer('created_at').notNull() });
 export const audit = sqliteTable('audit', { id:text('id').primaryKey(), actor:text('actor').notNull(), action:text('action').notNull(), subject:text('subject').notNull(), createdAt:integer('created_at').notNull() });
 export const rateLimits = sqliteTable('rate_limits', { key:text('key').primaryKey(), count:integer('count').notNull() });
+
+export const blogPosts = sqliteTable('blog_posts', { slug:text('slug').primaryKey(), title:text('title').notNull(), excerpt:text('excerpt').notNull(), body:text('body').notNull(), category:text('category').notNull(), cover:text('cover').notNull().default(''), coverAlt:text('cover_alt').notNull().default(''), status:text('status').notNull().default('draft'), publishedAt:integer('published_at'), updatedAt:integer('updated_at').notNull(), createdAt:integer('created_at').notNull() });
