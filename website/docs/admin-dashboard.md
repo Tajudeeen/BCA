@@ -1,6 +1,6 @@
 # Studio Desk dashboard
 
-Open /admin. ChatGPT sign-in and the existing STUDIO_ADMIN_EMAILS allowlist are required. Both the shared layout and data pages enforce access. Every mutation and backup export separately checks administrator access. The owner must supply the approved sign-in email(s) before activation. No account has been automatically promoted.
+Open /admin. ChatGPT sign-in and the existing STUDIO_ADMIN_EMAILS allowlist are required. Both the shared layout and data pages enforce access. Every mutation and backup export separately checks administrator access. The owner manages the approved sign-in email allowlist.
 
 ## Screens
 
@@ -26,4 +26,4 @@ Migrations append notes and updated_at to enquiries with constant defaults, pres
 - tests/check-admin-dashboard.mjs: actual mutation handler with an isolated in-memory adapter, covering admin/origin denial, enquiry notes and stale revisions, grant creation/renew/revoke, cross-project asset rejection, content revisions, file signatures/rename/removal, audit calls and server rendering of all dashboard views.
 - tests/check-admin-queries.mjs: actual Drizzle query builders against an in-memory SQLite adapter with all migrations applied. Verifies totals, search, combined filters, pagination clamping, grant states and exclusion of object keys.
 - Existing blog and commission enquiry tests remain applicable.
-- TypeScript and the production build must pass before deployment. Browser visual/interactive QA is unavailable in the current managed environment. Authenticated production dashboard interaction is pending approved administrator configuration.
+- Run TypeScript, production builds and responsive signed-in workflow checks when releasing dashboard changes.

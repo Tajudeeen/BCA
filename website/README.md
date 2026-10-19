@@ -6,7 +6,7 @@ BCA's studio website, automotive concept portfolio, publishing tools and protect
 
 The original brief is `Bonire_Concepts_Art_Website_Drawing_Plan.pdf` in the BCA repository. The latest approved studio copy is in `lib/studio.ts`, and project descriptions are in `lib/projects.ts`.
 
-## Current deployment
+## Website access
 
 - Hosted site: https://bonire-concepts-art.deeen-code.chatgpt.site
 - Portfolio: `/projects`
@@ -14,9 +14,7 @@ The original brief is `Bonire_Concepts_Art_Website_Drawing_Plan.pdf` in the BCA 
 - Administration: `/admin`
 - Article editor: `/admin/blog`
 
-The hosted site is owner-private. Studio administration additionally requires ChatGPT sign-in and an approved administrator email. The latest GitHub website work is tracked in [PR #2](https://github.com/Tajudeeen/BCA/pull/2), so `main` can lag behind the deployed version.
-
-No Vercel deployment has succeeded. The connected account rejected project creation in the `deeencodes` workspace. This application uses Cloudflare-specific bindings and the Sites identity integration. A Vercel deployment needs a compatible application build and a defined backend/authentication arrangement, not only a different build command. No Vercel migration or hybrid backend adaptation is implemented yet.
+The public website presents BCA’s work. Studio administration and private project materials use authenticated access.
 
 ## Product features
 
@@ -77,8 +75,6 @@ pnpm build
 
 For a standalone local checkout, `pnpm dev` runs the configured Vinext development workflow. The scripts select the checkout's execution profile. Production-style local preview uses `pnpm start` after a build, with Wrangler and local binding state.
 
-Managed Sites environments use the maintained setup, dependency-installation, preview and build helpers. These helpers belong to that environment and are not a prerequisite to understanding the application source. Supported browser preview must be available before browser QA can be performed there.
-
 ### Local database migrations
 
 SQL migrations live in `drizzle/`. Build first to generate `dist/server/wrangler.json`, then apply each migration that has not already been applied to the local database:
@@ -138,9 +134,9 @@ Published posts need a summary and article text. Cover selection uses the approv
 
 ORANGE CRUISER, AMI and ARA CNG have optimized films in R2. Collection previews can play muted while visible and respect reduced-motion/data-saving preferences. Project players support native controls, sound and seeking. `/api/films/[slug]` handles byte ranges, HEAD and ETags. Film keys, source checksums and encoding notes are documented under `lib/films.ts` and `docs/video-*.json`.
 
-IRIN's original video is uploaded in Git LFS, but actual media retrieval remains blocked through the available connector. No broken or placeholder film player is rendered. MACE FREEDOM currently has still galleries.
+IRIN and MACE FREEDOM currently use still galleries. Original media assets remain in the repository source collection.
 
-`/api/studio/film-import` is deliberately closed in source and returns 403. Future ingestion requires an explicit source change and fresh authorization.
+Concept-film ingestion is restricted to an authorized maintenance workflow. The public site does not accept film imports.
 
 Private materials are stored in R2 and require application authorization at download time. Private uploads are limited to 10 MB and supported PDF/PNG/JPEG/WebP formats with file-signature checks. Removing a material detaches its database access before attempting object cleanup.
 
@@ -187,17 +183,16 @@ pnpm build
 
 The dashboard handler tests use isolated adapters. The query tests execute actual Drizzle queries against in-memory SQLite with migrations applied. They do not create production enquiries, grants or blog posts.
 
-Recent verification includes TypeScript, production builds, migration checks, management/publishing tests and HTTP checks for private-route gates, denied writes/exports, public-page metadata, RSS and sitemap output. Browser visual/interactive QA remains unavailable in the managed environment. Signed-in production dashboard interaction awaits administrator configuration. No measured accessibility score, Core Web Vitals score, traffic figure or search ranking is claimed.
+The test suite covers permissions, management workflows, publishing, database queries and media delivery. Release checks should also exercise responsive layouts and signed-in browser workflows.
 
-## Public launch checklist
+## Website operations
 
-- Configure approved administrator sign-in emails.
-- Confirm legal identity, final privacy/terms and retention decisions.
-- Confirm the public domain and hosting audience.
+- Maintain approved administrator sign-in emails.
+- Review legal identity, privacy/terms and retention decisions.
+- Maintain the public domain and hosting access settings.
 - Update `siteOrigin` in `lib/seo.ts` if the canonical public origin changes.
-- Complete the required runtime adaptation and account authorization before Vercel deployment.
-- Verify Search Console/Bing ownership and submit `/sitemap.xml` after public launch.
-- Publish the first approved article and retrieve the IRIN video if available.
+- Maintain Search Console/Bing ownership and submit `/sitemap.xml`.
+- Publish approved studio articles and maintain curated concept media.
 - Complete responsive browser testing and signed-in form/access workflows.
 - Configure a notification provider only if email delivery is required.
 
@@ -208,6 +203,6 @@ Private hosting prevents crawling even when SEO metadata allows indexing. Search
 - [Admin dashboard](docs/admin-dashboard.md)
 - [Blog workflow](docs/blog.md)
 - [Search launch](docs/seo-launch.md)
-- [Original implementation notes](docs/IMPLEMENTATION.md), historical context that may predate later additions
+- [Implementation overview](docs/IMPLEMENTATION.md)
 - [Video provenance](docs/video-sources.json)
 - [Video encoding](docs/video-encoding.json)

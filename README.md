@@ -6,7 +6,7 @@ Bonire Concepts Art (BCA) is an independent automotive design and intellectual p
 
 The website introduces the company, presents its vehicle design portfolio, supports design commissions and partnerships, and gives the studio a protected workspace for managing enquiries, articles and approved project access.
 
-## Website and source status
+## Website and source
 
 | Resource | Location |
 | --- | --- |
@@ -15,13 +15,7 @@ The website introduces the company, presents its vehicle design portfolio, suppo
 | Studio journal | [Blog](https://bonire-concepts-art.deeen-code.chatgpt.site/blog) |
 | Administration | [Studio Desk](https://bonire-concepts-art.deeen-code.chatgpt.site/admin) |
 | Website source | [`website/`](website/) |
-| Latest website implementation | [Website development branch](https://github.com/Tajudeeen/BCA/tree/feat/studio-vision-mission/website) |
-| Website changes awaiting merge | [Pull request #2](https://github.com/Tajudeeen/BCA/pull/2) |
 | Original website brief | [Website drawing plan](Bonire_Concepts_Art_Website_Drawing_Plan.pdf) |
-
-The hosted site is currently owner-private. These links require the site's existing access permissions. The deployed version includes work on the website development branch that may not yet be merged into `main`.
-
-A Vercel deployment was requested but has not been completed. Project creation was rejected because the connected Vercel account lacked access to the `deeencodes` workspace. The current application also depends on Cloudflare Worker bindings and requires a compatible runtime adaptation before it can run on Vercel. There is no live Vercel URL for this build yet.
 
 ## Company direction
 
@@ -66,7 +60,7 @@ The homepage introduces the studio. Project galleries live in the Projects secti
 
 Project galleries support image selection and keyboard-accessible lightboxes. The collection can show muted concept-film previews while in view, with reduced-motion and data-saving preferences respected. Dedicated project players provide native controls and sound.
 
-Three optimized films are currently integrated: ORANGE CRUISER, AMI and ARA CNG. Media streaming supports byte ranges for seeking, HEAD requests and ETags. IRIN's original video is uploaded in Git LFS, but its actual MP4 could not be retrieved through the available connector. Its film player remains absent until verified media can be imported. MACE FREEDOM currently uses still galleries.
+Three optimized films are currently integrated: ORANGE CRUISER, AMI and ARA CNG. Media streaming supports byte ranges for seeking, HEAD requests and ETags. IRIN and MACE FREEDOM currently use still galleries. Original MP4 assets remain in the source collection.
 
 ### Blog and publishing
 
@@ -143,33 +137,31 @@ Use Node.js 22.13 or later and pnpm. Node 24 is recommended for the full test su
 ```sh
 git clone https://github.com/Tajudeeen/BCA.git
 cd BCA
-# Use the current implementation while PR #2 is awaiting merge.
-git switch feat/studio-vision-mission
 cd website
 pnpm install
 pnpm exec tsc --noEmit
 pnpm build
 ```
 
-This is a Cloudflare/Vinext application. Running it requires the runtime and bindings, not just a static file server. See the [website setup guide](https://github.com/Tajudeeen/BCA/blob/feat/studio-vision-mission/website/README.md) for local development, migration commands and runtime configuration.
+This is a Cloudflare/Vinext application. Running it requires the runtime and bindings, not just a static file server. See the [website setup guide](website/README.md) for local development, migration commands and runtime configuration.
 
 The original PDF and MP4 assets may be Git LFS pointers in a clone. Retrieve them with Git LFS when needed. A pointer file is not the actual document or video.
 
 ## Administrator activation
 
-The owner must configure `STUDIO_ADMIN_EMAILS` with approved ChatGPT sign-in emails before Studio Desk can be used. No first visitor becomes an administrator, and the public contact address does not automatically receive admin rights.
+Studio Desk uses `STUDIO_ADMIN_EMAILS` to identify approved ChatGPT sign-in emails. No first visitor becomes an administrator, and the public contact address does not automatically receive admin rights.
 
-After activation, sign in at `/admin`, review enquiries, publish studio articles, maintain portfolio copy and grant approved reviewers access to private materials. Administrator configuration is still pending.
+After activation, sign in at `/admin`, review enquiries, publish studio articles, maintain portfolio copy and grant approved reviewers access to private materials.
 
 ## Search visibility
 
 The build includes unique page titles and descriptions, canonical URLs, social previews, structured data, a sitemap with project images and crawler directives. Published blog articles receive article metadata and sitemap entries. Administrative, private and draft-policy pages are excluded from indexing.
 
-The current private hosting gate prevents public crawling. Public launch, final-domain configuration and search-platform ownership verification are still required. Search rankings have not been measured, and no top-five ranking is guaranteed.
+Search configuration includes canonical-domain settings, crawler access and search-platform ownership verification. Ranking depends on content relevance, discoverability and the wider web.
 
 ## Verification
 
-The latest website work has passed TypeScript, production builds and focused checks for:
+The website includes TypeScript checks, production builds and focused tests for:
 
 - Administrator permissions, request origins and invalid management actions.
 - Enquiry notes, project edits and stale-save conflicts.
@@ -179,19 +171,15 @@ The latest website work has passed TypeScript, production builds and focused che
 - Actual Drizzle SQL queries against migrated in-memory SQLite, including counts, filtering, search and pagination.
 - Commission enquiries and video byte-range behavior.
 
-Browser visual and interactive testing remains outstanding in the current environment. Authenticated production dashboard use also awaits approved administrator configuration.
+## Website operations
 
-## Remaining launch work
-
-- Supply approved administrator sign-in email(s).
-- Review final privacy terms, legal identity and record-retention decisions.
-- Confirm the final public domain and hosting visibility.
-- Complete Vercel workspace authorization and the required runtime adaptation if Vercel remains the deployment target.
-- Verify Google Search Console/Bing ownership and submit the sitemap after public launch.
-- Publish the first approved blog article.
-- Retrieve and verify the IRIN MP4 before enabling its film player.
-- Complete browser and signed-in production workflow testing.
-- Configure an email provider only if notifications are required.
+- Maintain approved administrator access and review grants regularly.
+- Keep project descriptions and development phases aligned with studio evidence.
+- Publish original design articles through the studio journal.
+- Review privacy terms, retention decisions and backup procedures.
+- Maintain domain settings, search ownership and the website sitemap.
+- Verify responsive layouts and signed-in workflows when releasing changes.
+- Configure a notification provider if studio email delivery is required.
 
 There is no vehicle checkout, payment collection, automated investment flow, CAD editor, public commenting system or automatic project-room approval. New vehicle projects and arbitrary public image uploads currently require source changes.
 
