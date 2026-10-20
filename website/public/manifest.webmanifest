@@ -1,0 +1,30 @@
+{
+  "id": "/",
+  "name": "Bonire Concepts Art",
+  "short_name": "BCA",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f7",
+  "theme_color": "#f7f7f4",
+  "icons": [
+    {
+      "src": "/brand/bonire-mark-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/bonire-mark-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/bonire-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
