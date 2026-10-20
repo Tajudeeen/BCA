@@ -10,10 +10,10 @@ The website introduces the company, presents its vehicle design portfolio, suppo
 
 | Resource | Location |
 | --- | --- |
-| Current hosted website | [Bonire Concepts Art](https://bca-chi-three.vercel.app) |
-| Vehicle portfolio | [Projects](https://bca-chi-three.vercel.app/projects) |
-| Studio journal | [Blog](https://bca-chi-three.vercel.app/blog) |
-| Administration | [Studio Desk](https://bca-chi-three.vercel.app/admin) |
+| Current hosted website | [Bonire Concepts Art](https://bonireconceptsart.vercel.app) |
+| Vehicle portfolio | [Projects](https://bonireconceptsart.vercel.app/projects) |
+| Studio journal | [Blog](https://bonireconceptsart.vercel.app/blog) |
+| Administration | [Studio Desk](https://bonireconceptsart.vercel.app/admin) |
 | Website source | [`website/`](website/) |
 | Original website brief | [Website drawing plan](Bonire_Concepts_Art_Website_Drawing_Plan.pdf) |
 

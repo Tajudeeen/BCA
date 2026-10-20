@@ -8,7 +8,7 @@ The original brief is `Bonire_Concepts_Art_Website_Drawing_Plan.pdf` in the BCA 
 
 ## Website access
 
-- Website: https://bca-chi-three.vercel.app
+- Website: https://bonireconceptsart.vercel.app
 - Portfolio: `/projects`
 - Journal: `/blog`
 - Administration: `/admin`

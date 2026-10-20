@@ -4,7 +4,7 @@ import {redirect} from 'next/navigation';
 import {getDb} from '@/db';
 import {user,account} from '@/db/auth-schema';
 import {createOwnerAuth} from './owner-auth-config';
-export const ownerOrigin='https://bca-chi-three.vercel.app';
+export const ownerOrigin='https://bonireconceptsart.vercel.app';
 export const ownerId='bca-company-owner';
 export function ownerAuth(){return createOwnerAuth(getDb(),env.BCA_AUTH_SECRET||'',ownerOrigin);}
 export async function provisionOwner(){

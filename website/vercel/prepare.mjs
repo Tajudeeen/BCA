@@ -19,6 +19,6 @@ write('lib/admin-data.ts',"import {ownerFetch} from './owner-auth';\nimport type
 write('lib/admin-services.ts',"import {ownerFetch} from './owner-auth';\nexport async function getDeskServices():Promise<{database:boolean;files:boolean}>{return (await ownerFetch('/api/studio/desk')).services;}\n");
 const proxy=fs.readFileSync(path.join(here,'admin-proxy.template.ts'),'utf8');
 for(const route of ['app/api/auth/[...path]/route.ts','app/api/admin/[[...path]]/route.ts','app/api/materials/[id]/route.ts'])write(route,proxy);
-let seo=fs.readFileSync(path.join(here,'lib/seo.ts'),'utf8').replace("export const siteOrigin='https://bonire-concepts-art.deeen-code.chatgpt.site';","export const siteOrigin=process.env.BCA_PUBLIC_ORIGIN||'https://bca-chi-three.vercel.app';");write('lib/seo.ts',seo);
+let seo=fs.readFileSync(path.join(here,'lib/seo.ts'),'utf8').replace("export const siteOrigin='https://bonire-concepts-art.deeen-code.chatgpt.site';","export const siteOrigin=process.env.BCA_PUBLIC_ORIGIN||'https://bonireconceptsart.vercel.app';");write('lib/seo.ts',seo);
 write('app/error.tsx',"'use client';\nexport default function ErrorPage({reset}:{reset:()=>void}){return <section className=\"section page-intro\"><p className=\"eyebrow\">Studio website</p><h1>Please try again.</h1><p>We couldn’t load this page. Try again in a moment.</p><button className=\"button\" onClick={reset}>Try again</button></section>;}\n");
 console.log('Prepared BCA website, company owner sign-in and protected dashboard.');
