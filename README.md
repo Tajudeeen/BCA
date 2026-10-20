@@ -10,10 +10,10 @@ The website introduces the company, presents its vehicle design portfolio, suppo
 
 | Resource | Location |
 | --- | --- |
-| Current hosted website | [Bonire Concepts Art](https://bonire-concepts-art.deeen-code.chatgpt.site) |
-| Vehicle portfolio | [Projects](https://bonire-concepts-art.deeen-code.chatgpt.site/projects) |
-| Studio journal | [Blog](https://bonire-concepts-art.deeen-code.chatgpt.site/blog) |
-| Administration | [Studio Desk](https://bonire-concepts-art.deeen-code.chatgpt.site/admin) |
+| Current hosted website | [Bonire Concepts Art](https://bca-chi-three.vercel.app) |
+| Vehicle portfolio | [Projects](https://bca-chi-three.vercel.app/projects) |
+| Studio journal | [Blog](https://bca-chi-three.vercel.app/blog) |
+| Administration | [Studio Desk](https://bca-chi-three.vercel.app/admin) |
 | Website source | [`website/`](website/) |
 | Original website brief | [Website drawing plan](Bonire_Concepts_Art_Website_Drawing_Plan.pdf) |
 
@@ -83,7 +83,7 @@ Studio Desk is a separate responsive administrative workspace at `/admin`.
 | Activity log | Searchable administrative actions and private download records |
 | Settings and backup | Signed-in account, service-binding availability, search resources and structured JSON export |
 
-Overview numbers describe studio records. Website traffic analytics and conversion tracking are not installed.
+Overview numbers describe studio records. Vercel Web Analytics is integrated into the production website.
 
 ### Enquiries and private project rooms
 
@@ -98,11 +98,11 @@ The application records enquiries but does not send email notifications or autom
 | Layer | Implementation |
 | --- | --- |
 | Interface | React 19, TypeScript, responsive CSS and local SVG/Lucide icons |
-| Routing and rendering | Vinext with Next.js App Router-compatible application structure |
-| Hosted runtime | Cloudflare Workers through Sites |
+| Routing and rendering | Native Next.js on Vercel, with a protected Vinext backend |
+| Hosted runtime | Vercel frontend and Cloudflare Workers backend |
 | Database | Cloudflare D1 with Drizzle ORM and tracked SQL migrations |
 | File storage | Cloudflare R2, with private downloads checked by the application |
-| Identity | Hosted ChatGPT sign-in and a studio administrator email allowlist |
+| Owner identity | Company email/password with Better Auth, durable sessions and login rate limits |
 | Public imagery | Curated WebP assets |
 | Concept films | Optimized H.264/AAC MP4s in R2 |
 
@@ -143,15 +143,15 @@ pnpm exec tsc --noEmit
 pnpm build
 ```
 
-This is a Cloudflare/Vinext application. Running it requires the runtime and bindings, not just a static file server. See the [website setup guide](website/README.md) for local development, migration commands and runtime configuration.
+The public production frontend is a native Next.js application in `website/vercel/`. The private data and media backend runs on Cloudflare/Vinext. Running it requires the runtime and bindings, not just a static file server. See the [website setup guide](website/README.md) for local development, migration commands and runtime configuration.
 
 The original PDF and MP4 assets may be Git LFS pointers in a clone. Retrieve them with Git LFS when needed. A pointer file is not the actual document or video.
 
 ## Administrator activation
 
-Studio Desk uses `STUDIO_ADMIN_EMAILS` to identify approved ChatGPT sign-in emails. No first visitor becomes an administrator, and the public contact address does not automatically receive admin rights.
+The company owner account is provisioned explicitly using `BCA_OWNER_EMAIL`, a Better Auth password hash and a protected authentication secret. Open `/sign-in` on the production website and use the company owner credentials. Public registration is disabled, and personal developer accounts have no administrator access. The owner can change the password in Settings.
 
-After activation, sign in at `/admin`, review enquiries, publish studio articles, maintain portfolio copy and grant approved reviewers access to private materials.
+After signing in, review enquiries, publish studio articles, maintain portfolio copy and grant approved reviewers access to private materials. All dashboard data and administrative APIs require the company owner session.
 
 ## Search visibility
 
@@ -163,6 +163,7 @@ Search configuration includes canonical-domain settings, crawler access and sear
 
 The website includes TypeScript checks, production builds and focused tests for:
 
+- Owner password sign-in, secure cookies, blocked public sign-up, forged sessions, password changes, sign-out revocation and persistent rate limits.
 - Administrator permissions, request origins and invalid management actions.
 - Enquiry notes, project edits and stale-save conflicts.
 - Grant creation, expiration, renewal and revocation.

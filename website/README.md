@@ -8,7 +8,7 @@ The original brief is `Bonire_Concepts_Art_Website_Drawing_Plan.pdf` in the BCA 
 
 ## Website access
 
-- Hosted site: https://bonire-concepts-art.deeen-code.chatgpt.site
+- Website: https://bca-chi-three.vercel.app
 - Portfolio: `/projects`
 - Journal: `/blog`
 - Administration: `/admin`
@@ -53,7 +53,7 @@ Display names use the approved wording while existing links remain stable. All p
 - Cloudflare Workers for server rendering and API handlers.
 - Cloudflare D1 and Drizzle ORM for persistent records.
 - Cloudflare R2 for concept films and private project files.
-- Hosted ChatGPT sign-in for administrator and private-room identities.
+- Company owner email/password authentication with Better Auth, persisted sessions, secure cookies and database-backed rate limits. Approved external project-room viewers retain hosted sign-in.
 - Responsive CSS, the approved BCA mark and brand blue sampled from the supplied raster logo.
 
 Public pages load source defaults merged with saved project-content overrides. Forms save validated enquiries in D1. The journal reads only published rows. Administrative routes check the signed-in email against the studio allowlist. Private file routes check an active project grant before streaming an R2 object.
@@ -95,16 +95,18 @@ After changing `db/schema.ts`, generate a new migration with `pnpm db:generate`,
 | --- | --- | --- |
 | `DB` | D1 database binding | Enquiries, saved content, articles, grants and audit records |
 | `BUCKET` | R2 object binding | Concept films and private materials |
-| `STUDIO_ADMIN_EMAILS` | Comma-separated approved ChatGPT sign-in emails | All dashboard and administrative actions |
-| Hosted identity headers | Supplied by the trusted Sites sign-in layer | Signed-in administrator and project-room identity |
+| `BCA_OWNER_EMAIL` | Provisioned company owner email | Sole administrator identity |
+| `BCA_OWNER_PASSWORD_HASH` | Better Auth password hash used for initial provisioning | Never place plaintext passwords in source |
+| `BCA_AUTH_SECRET` | Random secret with at least 32 characters | Session authentication |
+| Hosted identity headers | Supplied by the trusted Sites sign-in layer | Approved external project-room viewer identity only |
 
 `DB` and `BUCKET` are runtime bindings, not ordinary string environment variables. Copying names into a generic Node host does not create equivalent services.
 
-There is no default administrator, first-user registration or automatic promotion of the public company email. Keep configuration secrets outside source control. Never expose the trusted identity-header interface directly on a host without an equivalent authentication boundary.
+The company owner account is provisioned explicitly by the deployment operator. Public registration is disabled. Initial provisioning never resets a password subsequently changed by the owner. Keep secrets outside source control. Dashboard APIs require an active company owner session and mutations also require a valid Origin.
 
 ## Studio Desk operating guide
 
-1. Configure the approved administrator email(s), then sign in at `/admin`.
+1. Open `/sign-in` on the production website and sign in with the provisioned company owner credentials.
 2. Use Overview for actual database counts and recent studio activity.
 3. Search and filter enquiries, open the record, update its review status and save internal notes. Reply links open an email client.
 4. Edit approved project descriptions, phase and gallery selections under Portfolio. New projects and arbitrary public asset uploads require source changes.
@@ -175,6 +177,7 @@ Run from `website/`:
 pnpm exec tsc --noEmit
 node tests/check-admin-dashboard.mjs
 node tests/check-admin-queries.mjs
+node tests/check-owner-auth.mjs
 node tests/check-blog.mjs
 node tests/check-commission-enquiries.mjs
 node tests/check-video-ranges.mjs
@@ -187,7 +190,7 @@ The test suite covers permissions, management workflows, publishing, database qu
 
 ## Website operations
 
-- Maintain approved administrator sign-in emails.
+- Maintain the company owner credentials and change the password from Studio Desk settings when required.
 - Review legal identity, privacy/terms and retention decisions.
 - Maintain the public domain and hosting access settings.
 - Update `siteOrigin` in `lib/seo.ts` if the canonical public origin changes.

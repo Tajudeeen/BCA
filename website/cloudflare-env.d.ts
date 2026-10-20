@@ -1,7 +1,9 @@
 declare namespace Cloudflare {
   interface Env {
     DB?: D1Database;
-    STUDIO_ADMIN_EMAILS?: string;
+    BCA_OWNER_EMAIL?: string;
+    BCA_OWNER_PASSWORD_HASH?: string;
+    BCA_AUTH_SECRET?: string;
     BCA_FRONTEND_KEY?: string;
     BUCKET?: R2Bucket;
   }
